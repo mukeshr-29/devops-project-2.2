@@ -11,9 +11,13 @@
       become: yes  # Use sudo for copying if required
       become_user: root  # Use a privileged user for copying if required
 
+    - name: Install kubernetes Python library
+      pip:
+        name: kubernetes
+        executable: /usr/bin/python3  # Specify the correct Python interpreter path
+
     - name: Apply Deployment
       k8s:
         state: present
         definition: /home/ubuntu/deployment.yaml
         kubeconfig: /home/ubuntu/.kube/config
-
