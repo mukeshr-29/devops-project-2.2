@@ -26,3 +26,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
+    app: petstore  # Match the labels used in the Deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
