@@ -18,4 +18,4 @@
       args:
         chdir: /home/ubuntu/
         environment:
-          KUBECONFIG: "/path/to/your/kubeconfig/file"
+          KUBECONFIG: /home/ubuntu/.kube/config
