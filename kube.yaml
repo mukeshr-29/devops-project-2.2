@@ -4,7 +4,6 @@
   gather_facts: yes
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    ansible_python_interpreter_openshift: /usr/bin/python3
 
   tasks:
     - name: Copy deployment.yaml to Kubernetes master
@@ -14,8 +13,9 @@
       become: yes
       become_user: root
 
-    - name: Apply Deployment using openshift module
-      openshift:
-        state: present
-        definition: /home/ubuntu/deployment.yaml
-        kubeconfig: /home/ubuntu/.kube/config
+    - name: Apply Deployment using kubectl
+      command: kubectl apply -f /home/ubuntu/deployment.yaml
+      args:
+        chdir: /home/ubuntu/
+        environment:
+          KUBECONFIG: "/path/to/your/kubeconfig/file"
