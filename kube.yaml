@@ -1,4 +1,14 @@
----
+- name: Stop and remove existing container
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Stop and remove existing container
+      docker_container:
+        name: pet1
+        state: absent
+      ignore_errors: yes
+
 - name: Deploy Kubernetes Application
   hosts: k8s
   gather_facts: yes
