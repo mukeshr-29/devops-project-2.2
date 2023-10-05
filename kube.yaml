@@ -1,20 +1,15 @@
 ---
 - name: Deploy Kubernetes Application
-  hosts: k8s  # Replace with your target Kubernetes master host or group
-  gather_facts: yes  # Gather facts about the target host
+  hosts: k8s
+  gather_facts: yes
 
   tasks:
     - name: Copy deployment.yaml to Kubernetes master
       copy:
-        src: /var/lib/jenkins/workspace/project-2.2/deployment.yaml  # Assuming Jenkins workspace variable
+        src: /var/lib/jenkins/workspace/project-2.2/deployment.yaml
         dest: /home/ubuntu/
-      become: yes  # Use sudo for copying if required
-      become_user: root  # Use a privileged user for copying if required
-
-    - name: Install kubernetes Python library
-      pip:
-        name: kubernetes
-        executable: /usr/bin/python3  # Specify the correct Python interpreter path
+      become: yes
+      become_user: root
 
     - name: Apply Deployment
       k8s:
