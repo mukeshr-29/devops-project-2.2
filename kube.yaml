@@ -27,5 +27,5 @@
       command: kubectl apply -f /home/ubuntu/deployment.yaml
       args:
         chdir: /home/ubuntu/
-        environment:
-          KUBECONFIG: /home/ubuntu/.kube/config
+      environment:
+        KUBECONFIG: /home/ubuntu/.kube/config
