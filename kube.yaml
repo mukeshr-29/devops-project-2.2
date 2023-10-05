@@ -2,6 +2,8 @@
 - name: Deploy Kubernetes Application
   hosts: k8s
   gather_facts: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
     - name: Copy deployment.yaml to Kubernetes master
